@@ -78,7 +78,7 @@ function tryConnection() {
     if (web3.isConnected()) {
         startApp()
     } else {
-        toastr.error('No connection to Ethereum network', {timeOut: 15000});
+        toastr.error('No connection to Ethereum network', '', {timeOut: 0, extendedTimeOut: 0});
     }
 }
 
