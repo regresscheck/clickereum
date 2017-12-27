@@ -74,6 +74,13 @@ function startApp() {
     });
 }
 
+function tryConnection() {
+    if (web3.isConnected()) {
+        startApp()
+    } else {
+        toastr.error('No connection to Ethereum network', {timeOut: 15000});
+    }
+}
 
 $(document).ready(function () {
     BigNumber.config({ ROUNDING_MODE: 0 });
@@ -83,9 +90,5 @@ $(document).ready(function () {
         console.log('Trying rpc');
         window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
-    if (web3.isConnected()) {
-        startApp()
-    } else {
-        toastr.error('No connection to Ethereum network', {timeOut: 15000});
-    }
+    setTimeout(tryConnection, 50); // let the page load properly
 });
