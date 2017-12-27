@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Ethereum Button</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/5.0.0/bignumber.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@0.20.1/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollex/0.2.1/jquery.scrollex.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/abi.js"></script>
+    <script src="js/ethereum.js"></script>
+</head>
+<body>
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <div style="display:inline-block; float: left">
+                <div class="logo"><img src="css/images/eth.svg"></div>
+                <h2>Ethereum Button</h2>
+                <p>Your little Christmas present</p>
+            </div>
+            <div style="display:inline-block; float: right; margin-top: 5em;">
+                <h3 id="prize" class="invisible">Current prize: 0 ETH</h3>
+                <h3 id="blocksLeft" class="invisible">123</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <div class="content">
+                    <span class="icon block-icon fa-trophy"></span>
+                    <h2 class="major">Win the prize</h2>
+                    <p>Last person pressed the button becomes candidate. If no one presses the button in 250 blocks
+                        (~ 1 hour), then candidate is the winner and takes everything.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two -->
+        <section id="two" class="wrapper alt style1">
+            <div class="inner">
+                <div class="content">
+                    <span class="icon block-icon fa-signal"></span>
+                    <h2 class="major">Minimum amount</h2>
+                    <p>Each press should increase the prize at least by 2%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper spotlight style3">
+            <div class="inner">
+                <div class="content">
+                    <span class="icon block-icon fa-user-o"></span>
+                    <h2 class="major">Current candidate</h2>
+                    <p id="candidateAddress" class="invisible"></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+    <section id="footer">
+        <div class="inner">
+            <div class="inner">
+                <div class="content">
+                    <h2 class="major">Press the button</h2>
+                    <form id="pressForm">
+                        <div class="field">
+                            <label for="pressValue">Ether</label>
+                            <input type="number" step="any" id="pressValue">
+                        </div>
+                        <input id="pressButton" type="submit" value="Press" disabled>
+                    </form>
+                </div>
+            </div>
+            <ul class="copyright">
+                <li>&copy; Untitled Inc. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

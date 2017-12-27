@@ -1,0 +1,67 @@
+#banner {
+    overflow: auto;
+    height: auto;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.block-icon {
+    font-size: 5em;
+}
+
+#popup {
+    margin-top: -800px;
+    margin-right: 20px;
+    transition: all 1s ease, opacity 1s ease .5s;
+    opacity: 0;
+    float: right;
+    width: 200px;
+    height: 60px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 4px;
+    background: linear-gradient(top, rgba(247, 247, 247, 1) 0%, rgba(229, 229, 229, 1) 100%);
+    line-height: 0;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
+    position: relative;
+    z-index: 0;
+}
+
+#popup p {
+    margin: -30px 60px;
+    display: block;
+    width: 200px;
+    height: 80px;
+    color: #999;
+    text-shadow: 0px -1px 1px #fff, 0px 1px 1px #fff;
+}
+
+#popup:before {
+    content: '';
+    display: block;
+    width: 100%;
+    margin: 8px;
+    height: 40%;
+    background: url('http://lab.web-gate.fr/images/skype.png') no-repeat bottom;
+    background-position: 1% 1%;
+    background-size: 20%;
+    padding: 10px;
+}
+
+#popup:after {
+    z-index: 2;
+    position: absolute;
+    margin-top: -80px;
+    content: '';
+    display: block;
+    width: 200px;
+    height: 60px;
+    background-image: linear-gradient(315deg, rgba(255, 255, 255, .2) 49%, rgba(255, 255, 255, .0) 50%, rgba(255, 255, 255, .0));
+    border-radius: 10px;
+}
+
+#pop:checked ~ label #popup {
+    margin-top: -505px;
+    opacity: 1;
+}
