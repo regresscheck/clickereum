@@ -1,6 +1,7 @@
 var contractAddress = '0x3f85D0b6119B38b7E6B119F7550290fec4BE0e3c';
 var updateInterval = 1000;
 var fadeDuration = 2500;
+var precision = 3;
 
 var bigPrize = null;
 
@@ -39,8 +40,12 @@ function updateContractData() {
             console.log(err);
         } else {
             bigPrize = new BigNumber(web3.fromWei(value, 'ether'));
-            $('#prize').text('Current prize: ' + web3.fromWei(value, 'ether') + ' ETH');
+            var pressPrice = bigPrize.mul(2).div(100).toPrecision(precision);
+            $('#prize').text('Current prize: ' + new BigNumber(web3.fromWei(value, 'ether')).toPrecision(precision) + ' ETH');
             $('#prize').css('opacity', 0).animate({opacity: 1}, fadeDuration);
+
+            $('#pressPrice').text(pressPrice + ' ETH');
+            $('#pressPrice').css('opacity', 0).animate({opacity: 1}, fadeDuration);
         }
     });
 }
@@ -51,10 +56,9 @@ function startApp() {
     setInterval(updateContractData, updateInterval);
     updateContractData();
     $('#pressButton').prop('disabled', false);
-    $('#pressForm').submit(function () {
-        var amount = $('#pressValue').val();
-        var bigAmount = new BigNumber(amount);
-            if (bigPrize !== null && bigPrize.mul(2).div(100).lt(bigAmount)) {
+    $('#pressButton').click(function () {
+        if (bigPrize !== null) {
+            var amount = bigPrize.mul(2).div(100);
             contract.press.sendTransaction({value: web3.toWei(amount, 'ether')}, function(err, result) {
                 if (err) {
                     toastr.error('Error sending transaction');
@@ -72,6 +76,7 @@ function startApp() {
 
 
 $(document).ready(function () {
+    BigNumber.config({ ROUNDING_MODE: 0 });
     if (typeof web3 !== 'undefined') {
         window.web3 = new Web3(web3.currentProvider);
     } else {
