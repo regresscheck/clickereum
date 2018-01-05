@@ -79,6 +79,8 @@ function tryConnection() {
         startApp()
     } else {
         toastr.error('No connection to Ethereum network', '', {timeOut: 0, extendedTimeOut: 0});
+        $('#candidateAddress').text('No connection');
+        $('#candidateAddress').css('opacity', 0).animate({opacity: 1}, fadeDuration);
     }
 }
 
